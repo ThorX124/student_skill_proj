@@ -1,8 +1,8 @@
-from app.models import student, skill, student_skill
+from app.models import Student, Skill, Student_skill
 
-students: list[student] = []
-skills: list[skill] = []
-student_skills: list[student_skill] = []
+students: list[Student] = []
+skills: list[Skill] = []
+student_skills: list[Student_skill] = []
 
 _current_student_id = 0
 _current_skill_id = 0
