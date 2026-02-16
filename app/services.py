@@ -32,6 +32,7 @@ class StudentService:
 
     def add_skill_to_student(student: Student, skill: Skill, proficiency: int, assessment_score: int) -> Student:
         student_skill = Student_skill(
+            id=get_next_student_skill_id(),
             student_id=student.id,
             skill_id=skill.id,
             proficiency=proficiency,
@@ -66,7 +67,7 @@ class SkillService:
 class AnalyticsService:
     def create_student_skill(student_id: int, skill_id: int, proficiency: int, assessment_score: int) -> Student_skill:
         student_skill = Student_skill(
-            student_skill_id=get_next_student_skill_id(),
+            id=get_next_student_skill_id(),
             student_id=student_id,
             skill_id=skill_id,
             proficiency=proficiency,
@@ -78,8 +79,8 @@ class AnalyticsService:
     def get_all_student_skills() -> list[Student_skill]:
         return student_skills
 
-    def get_student_skill_by_id(student_id: int, skill_id: int) -> Student_skill | None:
-        return next((ss for ss in student_skills if ss.student_id == student_id and ss.skill_id == skill_id), None)
+    def get_student_skill_by_id(student_skill_id: int) -> Student_skill | None:
+        return next((ss for ss in student_skills if ss.id == student_skill_id), None)
 
     def update_student_skill(student_skill: Student_skill, proficiency: int | None, assessment_score: int | None) -> Student_skill:
         if proficiency is not None:
@@ -102,6 +103,7 @@ class AnalyticsService:
         for student_id, proficiencies in student_proficiency.items():
             avg_prof = sum(proficiencies) / len(proficiencies)
             average_proficiency.append(Student_skill(
+                id=0,  # id is not relevant for average proficiency
                 student_id=student_id,
                 skill_id=0,  # skill_id is not relevant for average proficiency
                 proficiency=int(avg_prof),

@@ -11,7 +11,8 @@ class Skill:
         self.name = name
 
 class Student_skill:
-    def __init__(self, student_id: int, skill_id: int, proficiency: int, assessment_score: int):
+    def __init__(self, id: int, student_id: int, skill_id: int, proficiency: int, assessment_score: int):
+        self.id = id
         self.student_id = student_id
         self.skill_id = skill_id
         self.proficiency = proficiency

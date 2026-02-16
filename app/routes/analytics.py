@@ -24,7 +24,7 @@ def update_student_skill(student_skill_id: int, student_skill_update: StudentSki
     student_skill = AnalyticsService.get_student_skill_by_id(student_skill_id)
     if not student_skill:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Student skill not found")
-    return AnalyticsService.update_student_skill(student_skill, student_skill_update.student_id, student_skill_update.skill_id, student_skill_update.proficiency, student_skill_update.assessment_score)
+    return AnalyticsService.update_student_skill(student_skill, student_skill_update.proficiency, student_skill_update.assessment_score)
 
 @router.delete("/student-skills/{student_skill_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_student_skill(student_skill_id: int):

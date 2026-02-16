@@ -38,6 +38,7 @@ class StudentSkillUpdate(BaseModel):
     assessment_score: Optional[int] = None
 
 class StudentSkillResponse(BaseModel):
+    id: int
     student_id: int
     skill_id: int
     proficiency: int
